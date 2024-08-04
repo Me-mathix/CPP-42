@@ -12,14 +12,18 @@ class Contact
 		std::string _nickname;
 		std::string _phonenumber;
 		std::string _darkestsecret;
+		bool		_initialized;
 	public:
 		Contact();
 		Contact(std::string firstname,
-		std::string lastname,
-		std::string nickname,
-		std::string phonenumber,
-		std::string darkestsecret);
+		std::string 		lastname,
+		std::string 		nickname,
+		std::string 		phonenumber,
+		std::string 		darkestsecret,
+		bool 				init);
 		~Contact();
+		std::string 		retrive_information(int index);
+		bool				exist(void);
 };
 
 #endif
