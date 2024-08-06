@@ -11,6 +11,18 @@ Fixed::Fixed( Fixed const &ori )
 	*this = ori;
 }
 
+Fixed::Fixed( const int nb )
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->_numb = nb << this->_bits;
+}
+
+Fixed::Fixed( const float nb )
+{
+	std::cout << "float constructor called" << std::endl;
+	this->_numb = roundf(nb * (1 << this->_bits));
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -31,4 +43,20 @@ int	Fixed::getRawBits( void ) const
 void Fixed::setRawBits( int const raw )
 {
 	this->_numb = raw;
+}
+
+float	Fixed::toFloat( void ) const
+{
+	return ((float) this->_numb / (1 << this->_bits));
+}
+
+int		Fixed::toInt( void ) const
+{
+	return (this->_numb >> this->_bits);
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fix)
+{
+	out << fix.toFloat();
+	return out;
 }
