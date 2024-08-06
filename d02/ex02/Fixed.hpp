@@ -15,6 +15,8 @@ class Fixed
 		Fixed( Fixed const &ori );
 		~Fixed();
 
+		Fixed	&operator=( Fixed const &ori );
+
 		// ** comparison operators ** //
 		bool	operator>( Fixed const &ori ) const;
 		bool	operator<( Fixed const &ori ) const;
@@ -44,8 +46,6 @@ class Fixed
 		const static Fixed 	&min( const Fixed &a, const Fixed &b ); 
 		static Fixed	&max( Fixed &a, Fixed &b );
 		const static Fixed	&max( const Fixed &a, const Fixed &b );
-
-		Fixed	&operator=( Fixed const &ori );
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &c);
