@@ -34,7 +34,7 @@ ClapTrap & ClapTrap::operator=( ClapTrap const &ori )
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (this->_hp == 0 || this->_ep == 0)
+	if (this->_hp <= 0 || this->_ep == 0)
 		return;
 	this->_ep--;
 	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_ad << " points of damage!" << std::endl;
@@ -42,7 +42,7 @@ void	ClapTrap::attack(const std::string& target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->_hp == 0 || this->_ep == 0)
+	if (this->_hp <= 0 || this->_ep == 0)
 		return;
 	this->_hp -=  amount;
 	std::cout << "ClapTrap " << this->_name << " take damage cauing him to loose " << amount << "  HP" << std::endl;
@@ -51,7 +51,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hp == 0 || this->_ep == 0)
+	if (this->_hp <= 0 || this->_ep == 0)
 		return;
 	this->_ep--;
 	this->_hp +=  amount;

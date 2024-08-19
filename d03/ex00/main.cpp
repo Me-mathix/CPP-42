@@ -6,7 +6,7 @@ int	main() {
 
 	marc.attack("jean");
 	
-	jean.takeDamage(1);
+	jean.takeDamage(100);
 	jean.beRepaired(2);
 	jean.takeDamage(1);
 

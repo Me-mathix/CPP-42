@@ -36,8 +36,8 @@ Fixed & Fixed::operator=( Fixed const &ori )
 }
 
 /*#################################################
-  #						FUN						  #
-  #################################################*/
+#						FUN						  #
+#################################################*/
 
 int	Fixed::getRawBits( void ) const
 {
@@ -95,8 +95,8 @@ const Fixed	&Fixed::max( const Fixed &a, const Fixed &b )
 
 
 /*#################################################
-  #				OVERLOAD OPERATORS				  #
-  #################################################*/
+#				OVERLOAD OPERATORS				  #
+#################################################*/
 
 
 bool	Fixed::operator>( Fixed const &ori ) const

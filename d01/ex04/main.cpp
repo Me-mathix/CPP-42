@@ -4,16 +4,18 @@
 
 int main(int argc, char const *argv[])
 {
+	if (argc != 4)
+		return ;
 	std::string filename = argv[1];
 	std::string to_find = argv[2];
 	std::string replaced = argv[3];
 	std::string line;
 	size_t		old_find;
 	
-	std::ifstream read(filename);
+	std::ifstream read(filename.c_str());
 	if(read.bad())
         return (0);
-	std::ofstream outfile(filename + ".replace");
+	std::ofstream outfile((filename + ".replace").c_str());
 	if(outfile.bad())
         return (read.close(), 0);
 

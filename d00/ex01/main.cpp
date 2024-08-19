@@ -1,5 +1,5 @@
 #include "PhoneBook.hpp"
-#include "add.hpp"
+#include "Add.hpp"
 #include <cstdlib>
 
 void	diplay_shortbook(PhoneBook book)
@@ -7,8 +7,8 @@ void	diplay_shortbook(PhoneBook book)
 	Contact		usage;
 	std::string	result;
 	std::string	tmp;
-	std::cout << "    ID    |First Name|Last  Name| Nickname |Phone num.|" << std::endl;
-	std::cout << "          |          |          |          |          |" << std::endl;
+	std::cout << "    ID    |First Name|Last  Name| Nickname |" << std::endl;
+	std::cout << "          |          |          |          |" << std::endl;
 	for (size_t i = 0; i < 8; i++)
 	{
 		result.clear();
@@ -16,7 +16,7 @@ void	diplay_shortbook(PhoneBook book)
 		if (usage.exist() == false)
 			break;
 	
-		for (size_t y = 0; y < 4; y++)
+		for (size_t y = 0; y < 3; y++)
 		{
 			tmp = usage.retrive_information(y);
 			if (tmp.length() > 10)
@@ -24,7 +24,7 @@ void	diplay_shortbook(PhoneBook book)
 			else
 			{
 				for (size_t k = tmp.length(); k < 10; k++)
-					tmp += " ";				
+					result += " ";
 			}
 			result += tmp +  "|";
 		}
@@ -43,10 +43,11 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		std::cout << "enter a choice" << std::endl << std::endl;
-		std::getline(std::cin, result);
+		if (!std::getline(std::cin, result))
+			return 1;
 		if (result == "ADD")
 			create_contact(book);
-		if (result == "SEARCH")
+		else if (result == "SEARCH")
 		{
 			diplay_shortbook(book);
 			std::cout << "input ID" << std::endl;
@@ -69,7 +70,8 @@ int main(int argc, char **argv)
 			std::cout << "Press Enter to continue..." << std::endl;
 			std::cin.ignore();
 		}
-		if (result == "EXIT")
-			break;
+		else if (result == "EXIT")
+			break ;
 	}
+	return (0);
 }

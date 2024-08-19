@@ -4,23 +4,23 @@ CC			=	c++
 
 FLAG		=	-Wall -Wextra -Werror -std=c++98
 
-SRC			=	main.c \
-				add.cpp \
+SRC			=	main.cpp \
+				Add.cpp \
 				Contact.cpp \
 				PhoneBook.cpp \
 
-INC_DIR		=	./inc
+INC_DIR		=	./incl
 
-OBJ			=	$(SRC:.c=.o)
+OBJ			=	$(SRC:.cpp=.o)
 
-.c.o:
-	$(CC) $(FLAG) -c $< -o $@
+.cpp.o:
+	$(CC) $(FLAG) -I $(INC_DIR) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\033[0;33m\nCOMPILING phonebook...\n"
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 	@echo "\033[1;32m./phonebook created\n"
 
 clean:
