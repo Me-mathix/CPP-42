@@ -6,7 +6,7 @@
 /*   By: mda-cunh <mda-cunh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 11:37:26 by mda-cunh          #+#    #+#             */
-/*   Updated: 2024/08/20 11:56:46 by mda-cunh         ###   ########.fr       */
+/*   Updated: 2024/08/20 15:05:00 by mda-cunh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ std::string retrieve_number(std::string inpt)
 		std::cout << "Whats the " << inpt + " :" << std::endl;
 		if (!std::getline(std::cin, instring))
 			return ("ERROR");
+		if (instring.size() != 0 && !is_digits(instring))
+			std::cout << "only digit allowed" << std::endl;
 	}
 	return (instring);
 }
 
-std::string retrieve_information(std::string inpt)
+std::string recieve_information(std::string inpt)
 {
 	std::string instring;
 	
@@ -55,12 +57,20 @@ void create_contact(PhoneBook &book)
 
 	std::cout << "You're on the point to add a new contact follow the instructions under :" << std::endl;
 	std::cout << std::endl;
-	result[0] = retrieve_information("Last Name");
-	result[1] = retrieve_information("First Name");
-	result[2] = retrieve_information("Nickname");
+	result[0] = recieve_information("Last Name");
+	if (result[0] == "ERROR")
+		return ;
+	result[1] = recieve_information("First Name");
+	if (result[1] == "ERROR")
+		return ;
+	result[2] = recieve_information("Nickname");
+	if (result[2] == "ERROR")
+		return ;
 	result[3] = retrieve_number("Phone Number");
-	result[4] = retrieve_information("Darkest Secret");
-	if (result[0] == "ERROR" || result[1] == "ERROR" || result[2] == "ERROR" || result[3] == "ERROR" || result[4] == "ERROR")
+	if (result[3] == "ERROR")
+		return ;
+	result[4] = recieve_information("Darkest Secret");
+	if (result[4] == "ERROR")
 		return ;
 	Contact newcontact(result[0], result[1], result[2], result[3], result[4], true);
 	book.add_to_phonebook(newcontact);
