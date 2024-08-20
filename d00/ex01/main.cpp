@@ -39,6 +39,7 @@ int main(int argc, char **argv)
 	std::string result;
 	PhoneBook book;
 	Contact write;
+	int result_id;
 
 	while (1)
 	{
@@ -51,13 +52,15 @@ int main(int argc, char **argv)
 		{
 			diplay_shortbook(book);
 			std::cout << "input ID" << std::endl;
-			std::getline(std::cin, result);
-			if (std::atoi(result.c_str()) < 1 || std::atoi(result.c_str()) > 8)
+			if (!std::getline(std::cin, result))
+				return 1;
+			result_id = std::atoi(result.c_str());
+			if (result_id < 1 || result_id > 8)
 			{
 				std::cout << "Invalid id" << std::endl;
 				continue;
 			}
-			write = book.retrive_contact(std::atoi(result.c_str()) - 1);
+			write = book.retrive_contact(result_id - 1);
 			if (write.exist() == false)
 			{
 				std::cout << "does not exist" << std::endl;
