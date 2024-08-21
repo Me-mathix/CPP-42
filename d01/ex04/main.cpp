@@ -5,7 +5,7 @@
 int main(int argc, char const *argv[])
 {
 	if (argc != 4)
-		return ;
+		return 1;
 	std::string filename = argv[1];
 	std::string to_find = argv[2];
 	std::string replaced = argv[3];

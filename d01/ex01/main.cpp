@@ -1,10 +1,10 @@
 #include "Zombie.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
 	Zombie* Test;
 
-	Test = zombieHorde(10 ,"caca");
+	Test = zombieHorde(10 ,"JACK");
 	for (size_t i = 0; i < 10; i++)
 	{
 		Test[i].announce();
