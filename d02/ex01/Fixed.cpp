@@ -7,7 +7,7 @@ Fixed::Fixed() : _numb(0)
 
 Fixed::Fixed( Fixed const &ori )
 {
-	std::cout << "Copy constructor called With numb : " << ori._numb << std::endl;
+	std::cout << "Copy constructor called With numb : " << ori.toInt() << std::endl;
 	*this = ori;
 }
 
@@ -30,7 +30,7 @@ Fixed::~Fixed()
 
 Fixed & Fixed::operator=( Fixed const &ori )
 {
-	std::cout << "Copy assignment operator called with numb : " << ori._numb << std::endl;
+	std::cout << "Copy assignment operator called with numb : " << ori.toInt() << std::endl;
 	this->_numb = ori.getRawBits();
 	return *this;
 }
