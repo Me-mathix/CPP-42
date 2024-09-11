@@ -16,6 +16,7 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 	this->_ad = 20;
 }
 
+
 ScavTrap::ScavTrap(const ScavTrap& ref)
 {
 	std::cout << BLUE << "[ScavTrap] " << "copy!!" << RESET << std::endl;

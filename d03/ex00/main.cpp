@@ -5,7 +5,6 @@ int	main() {
 	ClapTrap jean("jean");
 
 	marc.attack("jean");
-	
 	jean.takeDamage(100);
 	jean.beRepaired(2);
 	jean.takeDamage(1);
