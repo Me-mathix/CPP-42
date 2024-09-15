@@ -24,6 +24,8 @@ static void	testCopy() {
 
 int main( void )
 {
+	Animal animal;
+	
 	Animal *all[50];
 	for (size_t i = 0; i < 50; i++)
 	{
