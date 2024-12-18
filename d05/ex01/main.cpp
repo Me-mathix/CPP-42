@@ -1,20 +1,22 @@
-#include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main() {
-    try {
-        Bureaucrat john(1, "John");
-        std::cout << john << std::endl;
+	try {
+		Bureaucrat alice(50, "Alice");
+		Bureaucrat bob(100, "Bob");
 
-        // Attempt a promotion that should fail
-        john.promotion();
-    } catch (const Bureaucrat::GradeTooHighException& e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    } catch (const Bureaucrat::GradeTooLowException& e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << "Unknown exception caught: " << e.what() << std::endl;
-    }
+		Form taxForm("Tax Form", 75, 50);
 
-    return 0;
+		std::cout << taxForm << std::endl;
+
+		alice.signForm(taxForm); // Should succeed
+		std::cout << taxForm << std::endl;
+
+		bob.signForm(taxForm); // Should fail
+	} catch (std::exception& e) {
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
+
+	return 0;
 }
