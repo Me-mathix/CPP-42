@@ -9,6 +9,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("Rob
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& ref) : AForm(ref.formName(), ref.formGradeToSign(), ref.formGradeToExec()), _target_name(ref._target_name)
 {
+	*this=ref;
 	std::cout << "[RobotomyRequestForm] " << "copy!!" << std::endl;
 }
 
@@ -19,7 +20,10 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& ref)
 {
-	*this=ref;
+	if (this != &ref)
+	{
+		this->_target_name = ref._target_name;
+	}
 	std::cout << "[RobotomyRequestForm] " << "operator=!!" << std::endl;
 	return (*this);
 }

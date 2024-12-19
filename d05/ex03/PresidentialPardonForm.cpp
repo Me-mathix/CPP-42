@@ -8,6 +8,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : AFor
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& ref) : AForm(ref.formName(), ref.formGradeToSign(), ref.formGradeToExec()), _target_name(ref._target_name)
 {
+	*this=ref;
 	std::cout << "[PresidentialPardonForm] " << "copy!!" << std::endl;
 }
 
@@ -18,7 +19,10 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm& ref)
 {
-	*this=ref;
+	if (this != &ref)
+	{
+		this->_target_name = ref._target_name;
+	}
 	std::cout << "[PresidentialPardonForm] " << "operator=!!" << std::endl;
 	return (*this);
 }

@@ -24,7 +24,11 @@ AForm::~AForm()
 
 AForm&	AForm::operator=(const AForm& ref)
 {
-	*this=ref;
+	if (this != &ref)
+	{
+		this->_name = ref._name;
+		this->_is_signed = ref._is_signed;
+	}
 	std::cout << "[AForm] " << "operator=!!" << std::endl;
 	return (*this);
 }

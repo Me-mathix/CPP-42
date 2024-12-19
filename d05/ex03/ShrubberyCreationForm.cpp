@@ -9,6 +9,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm(
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& ref) : AForm(ref.formName(), ref.formGradeToSign(), ref.formGradeToExec()), _target_name(ref._target_name)
 {
+	*this=ref;
 	std::cout << "[ShrubberyCreationForm] " << "copy!!" << std::endl;
 }
 
@@ -19,7 +20,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& ref)
 {
-	*this=ref;
+	if (this != &ref)
+	{
+		this->_target_name = ref._target_name;
+	}
 	std::cout << "[ShrubberyCreationForm] " << "operator=!!" << std::endl;
 	return (*this);
 }

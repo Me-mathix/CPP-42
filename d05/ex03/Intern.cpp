@@ -19,7 +19,7 @@ Intern::~Intern()
 
 Intern&	Intern::operator=(const Intern& ref)
 {
-	*this=ref;
+	(void)ref;
 	std::cout << "[Intern] " << "operator=!!" << std::endl;
 	return (*this);
 }

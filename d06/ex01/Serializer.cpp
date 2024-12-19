@@ -20,7 +20,7 @@ Serializer::~Serializer()
 
 Serializer&	Serializer::operator=(const Serializer& ref)
 {
-	*this=ref;
+	(void) ref;
 	std::cout << "[Serializer] " << "operator=!!" << std::endl;
 	return (*this);
 }

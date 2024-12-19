@@ -24,7 +24,11 @@ AForm::~AForm()
 
 AForm&	AForm::operator=(const AForm& ref)
 {
-	*this=ref;
+	if (this != &ref)
+	{
+		this->_name = ref._name;
+		this->_is_signed = ref._is_signed;
+	}
 	std::cout << "[AForm] " << "operator=!!" << std::endl;
 	return (*this);
 }
@@ -46,7 +50,7 @@ bool AForm::formIsSigned() const
 	return _is_signed;
 }
 
-int  AForm::formGradeToSign() const
+int AForm::formGradeToSign() const
 {
 	return _grade_to_sign;
 } 

@@ -11,9 +11,8 @@ Form::Form(const std::string& name, int grade_to_sign, int grade_to_execute) :
 	std::cout << "[Form] " << "create!!" << std::endl;
 }
 
-Form::Form(const Form& ref) : _grade_to_sign(ref._grade_to_sign), _grade_to_execute(ref._grade_to_execute)
+Form::Form(const Form& ref) :_name(ref._name), _is_signed(ref._is_signed), _grade_to_sign(ref._grade_to_sign), _grade_to_execute(ref._grade_to_execute)
 {
-	*this=ref;
 	std::cout << "[Form] " << "copy!!" << std::endl;
 }
 
@@ -24,7 +23,11 @@ Form::~Form()
 
 Form&	Form::operator=(const Form& ref)
 {
-	*this=ref;
+	if (this != &ref)
+	{
+		this->_name = ref._name;
+		this->_is_signed = ref._is_signed;
+	}
 	std::cout << "[Form] " << "operator=!!" << std::endl;
 	return (*this);
 }

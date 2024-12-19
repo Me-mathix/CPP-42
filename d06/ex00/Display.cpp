@@ -20,7 +20,7 @@ Display::~Display()
 
 Display&	Display::operator=(const Display& ref)
 {
-	*this=ref;
+	(void) ref;
 	std::cout << "[Display] " << "operator=!!" << std::endl;
 	return (*this);
 }

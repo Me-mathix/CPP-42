@@ -22,7 +22,7 @@ ScalarConverter::~ScalarConverter()
 
 ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& ref)
 {
-	*this=ref;
+	(void) ref;
 	std::cout << "[ScalarConverter] " << "operator=!!" << std::endl;
 	return (*this);
 }
@@ -81,23 +81,24 @@ void ScalarConverter::convert(const std::string &literal)
 		case INT:
 			if (std::atol(literal.c_str()) > std::numeric_limits<int>::max() || std::atol(literal.c_str()) < std::numeric_limits<int>::min())
 			{
-				std::cout << "Int Overflow detected no convertion available";
+				std::cout << "Int Overflow detected no convertion available" << std::endl;
 				break;
 			}
 			Display::integer(std::atoi(literal.c_str()));
 			break;
 		case FLOAT:
-			if (std::atof(literal.c_str()) > std::numeric_limits<float>::max() || std::atof(literal.c_str()) < std::numeric_limits<float>::min())
+			if (std::atof(literal.c_str()) > std::numeric_limits<float>::max() || std::atof(literal.c_str()) < -std::numeric_limits<float>::max())
 			{
-				std::cout << "Float Overflow detected no convertion available";
+				std::cout << std::atof(literal.c_str()) << "||" << std::numeric_limits<float>::min() << std::endl;
+				std::cout << "Float Overflow detected no convertion available" << std::endl;
 				break;
 			}
 			Display::floatNumber(static_cast<float>(std::atof(literal.c_str())));
 			break;
 		case DOUBLE:
-			if (std::strtod(literal.c_str(), NULL) > std::numeric_limits<double>::max() || std::strtod(literal.c_str(), NULL) < std::numeric_limits<double>::min())
+			if (std::strtod(literal.c_str(), NULL) > std::numeric_limits<double>::max() || std::strtod(literal.c_str(), NULL) < -std::numeric_limits<double>::max())
 			{
-				std::cout << "double Overflow detected no convertion available";
+				std::cout << "double Overflow detected no convertion available" << std::endl;
 				break;
 			}
 			Display::doubleNumber(std::strtod(literal.c_str(), NULL));
