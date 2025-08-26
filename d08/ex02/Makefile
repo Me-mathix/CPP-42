@@ -1,10 +1,10 @@
-NAME		=	easyfind
+NAME		=	MutantStack
 
 CC			=	c++
 
 FLAG		=	-Wall -Wextra -Werror -std=c++98
 
-SRC			=	main.cpp 
+SRC			=	main.cpp
 
 INC_DIR		=	./
 

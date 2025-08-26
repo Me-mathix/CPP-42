@@ -1,33 +1,62 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include "easyfind.hpp" // assuming easyfind is in this file
+#include <deque>
+#include "easyfind.hpp"
 
-int main()
-{
-    std::vector<int> vec = {10, 20, 30, 40, 50};
+int main() {
+    std::cout << "Test w/ vector" << std::endl;
+    std::vector<int> v;
+    for (int i = 0; i < 10; ++i)
+        v.push_back(i);
 
-    // Test 1: Element found
-    auto it = easyfind(vec, 30);
-    if (it != vec.end())
-        std::cout << "Found: " << *it << std::endl;
+    std::vector<int>::iterator vit = easyfind(v, 5);
+    if (vit != v.end())
+        std::cout << "find in vector: " << *vit << std::endl;
     else
-        std::cout << "Not found" << std::endl;
+        std::cout << "not find in vector" << std::endl;
 
-    // Test 2: Element not found
-    it = easyfind(vec, 99);
-    if (it != vec.end())
-        std::cout << "Found: " << *it << std::endl;
+    vit = easyfind(v, 42);
+    if (vit != v.end())
+        std::cout << "find in vector: " << *vit << std::endl;
     else
-        std::cout << "Not found" << std::endl;
+        std::cout << "42 not find in vector" << std::endl;
 
-    // Test 3: Using with list
-    std::list<int> lst = {5, 15, 25};
-    auto it2 = easyfind(lst, 15);
-    if (it2 != lst.end())
-        std::cout << "Found in list: " << *it2 << std::endl;
+
+    std::cout << "\nTest w/ list" << std::endl;
+    std::list<int> lst;
+    for (int i = 10; i < 20; ++i)
+        lst.push_back(i);
+
+    std::list<int>::iterator lit = easyfind(lst, 15);
+    if (lit != lst.end())
+        std::cout << "find in list: " << *lit << std::endl;
     else
-        std::cout << "Not found in list" << std::endl;
+        std::cout << "not find in list" << std::endl;
+
+    lit = easyfind(lst, 100);
+    if (lit != lst.end())
+        std::cout << "find in list: " << *lit << std::endl;
+    else
+        std::cout << "100 not find in list" << std::endl;
+
+
+    std::cout << "\nTest w/ deque" << std::endl;
+    std::deque<int> dq;
+    for (int i = -5; i < 5; ++i)
+        dq.push_back(i);
+
+    std::deque<int>::iterator dit = easyfind(dq, -3);
+    if (dit != dq.end())
+        std::cout << "find in deque: " << *dit << std::endl;
+    else
+        std::cout << "not find in deque" << std::endl;
+
+    dit = easyfind(dq, 99);
+    if (dit != dq.end())
+        std::cout << "find in deque: " << *dit << std::endl;
+    else
+        std::cout << "99 not find in deque" << std::endl;
 
     return 0;
 }

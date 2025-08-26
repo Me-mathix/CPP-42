@@ -1,10 +1,10 @@
-NAME		=	easyfind
+NAME		=	Span
 
 CC			=	c++
 
 FLAG		=	-Wall -Wextra -Werror -std=c++98
 
-SRC			=	main.cpp 
+SRC			=	main.cpp Span.cpp
 
 INC_DIR		=	./
 
