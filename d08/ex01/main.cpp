@@ -94,6 +94,27 @@ void iteratorTest() {
 	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 }
 
+void copyAndAssign() {
+	std::cout << "\nCopy And Assign Operator Test" << std::endl;
+	Span sp(5);
+
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+
+	Span copy(sp);
+
+	std::cout << "Shortest span: (on copy) " << copy.shortestSpan() << std::endl;
+	std::cout << "Longest span: (on copy) " << copy.longestSpan() << std::endl;
+
+	Span assign = sp;
+
+	std::cout << "Shortest span: (on assign) " << assign.shortestSpan() << std::endl;
+	std::cout << "Longest span: (on assign) " << assign.longestSpan() << std::endl;
+}
+
 int main() {
 	basicTest();
 	overflowTest();
@@ -101,6 +122,7 @@ int main() {
 	duplicateTest();
 	largeTest();
 	iteratorTest();
+	copyAndAssign();
 
 	return 0;
 }
