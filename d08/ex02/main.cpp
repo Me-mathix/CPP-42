@@ -52,6 +52,7 @@ int main() {
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
+	mstack.pop();
 	mstack.push(42);
 
 	std::cout << "MutantStack iteration:" << std::endl;
@@ -68,6 +69,7 @@ int main() {
 	lst.push_back(3);
 	lst.push_back(5);
 	lst.push_back(737);
+	lst.pop_back();
 	lst.push_back(42);
 
 	std::cout << "std::list iteration:" << std::endl;
@@ -76,9 +78,14 @@ int main() {
 	}
 	std::cout << std::endl;
 
-	while (mstack.empty() == false)
+	MutantStack<int>::iterator clearIt = mstack.begin();
+
+	while (clearIt != mstack.end())
 		mstack.pop();
+	mstack.push(42);
 	std::cout << "Final size: " << mstack.size() << std::endl;
+
+	std::cout << "Top: " << mstack.top() << std::endl;
 
 	return 0;
 }
